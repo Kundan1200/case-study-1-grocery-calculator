@@ -1,0 +1,27 @@
+#Case Study 1: Grocery Store Calculator
+cart = {}
+
+while True:
+    choice = input("1. Add 2. View 3. Checkout 4. Exit: ")
+    
+    if choice == '1':
+        item = input("Item name: ")
+        price = float(input("Price: $"))
+        qty = int(input("Quantity: "))
+        cart[item] = {'price': price, 'quantity': qty}
+    elif choice == '2':
+        if cart: 
+            for item, details in cart.items():
+                print(f"{item}: ${details['price']} x {details['quantity']}")
+        else: print("Cart is empty.")
+    elif choice == '3':
+        total = sum(details['price'] * details['quantity'] for details in cart.values())
+        print(f"Total: ${total}")
+        if input("Discount? (yes/no): ").lower() == 'yes':
+            total *= (1 - float(input("Discount %: ")) / 100)
+        print(f"Final total: ${total}")
+        break
+    elif choice == '4': 
+        print("Goodbye!")
+        break
+       
