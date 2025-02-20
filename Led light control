@@ -1,0 +1,29 @@
+def set_brightness(brightness):
+    if brightness < 0:
+        brightness = 0
+    elif brightness > 100:
+        brightness = 100 
+
+    num_stars = brightness // 10  
+    print(f"LED Brightness: [{'*' * num_stars}{' ' * (10 - num_stars)}] {brightness}%")
+
+
+def main():
+    while True:
+        try:
+            brightness = int(input("Enter the LED brightness (0-100): "))
+
+            if brightness == -1:
+                print("Exiting program.")
+                break
+
+            set_brightness(brightness)
+
+        except ValueError:
+            print("Invalid input! Please enter a valid number between 0 and 100.")
+        
+        print("\nTo exit, enter -1.")
+
+
+if __name__ == "__main__":
+    main()
